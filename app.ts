@@ -1,20 +1,54 @@
-function add(n1:number, n2:number, showRes: boolean, resPhrase: string){
-    if(showRes){
-        console.log(resPhrase, n1 + n2)
-    }else{
-        return n1 + n2
-    }
+// object types
+
+// const person: {
+//     name: string;
+//     age: number;
+//     hobbies: string[];
+//     role: [number, string];
+// } = {
+
+// you can do the above work to specifify types within an object, as declaring
+// just an object type really gives us nothing, but it's better, usually, to 
+// let typescript infer an object type... EXCEPT in cases where typsecript doesn't
+// infer correctly, like for the tuple example in 'role'; which, unless explicity 
+// stipulated, typsecript will only interpret it as an array
+
+// const ADMIN = 0;
+// const READ_ONLY = 1;
+// const AUTHOR = 2;
+
+enum permissions { ADMIN, READ_ONLY, AUTHOR };
+
+const person = {
+    name: 'Maximilian',
+    age: 30,
+    hobbies: ['sports', 'cooking'],
+    role: [2, 'writer'],
+    permissions: permissions.AUTHOR
+};
+
+console.log(person);
+
+
+// array types
+let favoriteActivities: string[]; // this tells typescript to expect an array of strings
+favoriteActivities = ['sports', 'cooking']
+
+for (const hobby of person.hobbies) {
+    console.log(hobby.toUpperCase())
+    //the cool thing here about typescript inference is that we get access to all string methods
+    //here, because TS detect that it is an array of strings! if i added a number to the arr, tho, i'd lose it
 }
 
-let number1: number = 5;
-// we can absolutely declare a type here, but type inference often makes it
-// unnecessary; it's considered redundant and not best practice
-let num1: number;
-// above case IS best practice, because the variable isn't yet assigned, so 
-// this lets TypeScript know what type it should expect when it is assigned
-const number2 = 2.8;
+// can be loose or strict
+let looseArray: any[];
+let strictArray: string[] //or number[], etc...
 
-const printResult = true;
-const resultPhrase = 'Result is: ';
 
-add(number1, number2, printResult, resultPhrase);
+// tuples (a fixed length/type array)
+// - see above
+
+// Enums (does not exist in vanilla JS)
+// ex: enum {NEW, OLD} //and then typsecript adds autmatically enumerated global constant identifiers
+// - see above
+

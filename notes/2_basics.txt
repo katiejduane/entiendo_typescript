@@ -13,5 +13,4 @@ and declare a type; it cannot change on a whim.
 
 
 Object Types: 
-
-
+- 
