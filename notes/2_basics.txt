@@ -11,6 +11,3 @@ and declare a type; it cannot change on a whim.
 
     * Core primitive types in TS are lowercase!!! (string, number, boolean; NOT String, etc)
 
-
-Object Types: 
-- 
