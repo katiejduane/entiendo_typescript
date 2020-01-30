@@ -13,4 +13,14 @@ console.log('Time to get started,', userName, '!, You silly girl!');
 // pointing at a specific file, and it will compile all TS files into JS that it finds in the 
 // project folder. AND... anything in a subfolder...
 // configuration notes:
-// - you can add a "exlude" to the tsconfig to leave out particular files from being compiled
+// - you can add a "exlude" to the tsconfig to leave out particular files from being compiled.
+//      - you add a path to the file, and can also use wildcards ,like "*.dev.ts", or "**/*.dev.ts"
+// - you can also add an "include", and any file or folder NOT in the "include" array WILL NOT
+//      be compiled --> "include": ["app.ts"]
+// - you can also add a "files":[] to compile, tho this setting isn't commonly used.
+// some basic config options
+var lilButton = document.querySelector('button');
+// the exlamation point above tells TS not to worry, that button DOES/WILL exist!
+lilButton.addEventListener('click', function () {
+    console.log('i was clicked!');
+});

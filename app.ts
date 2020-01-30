@@ -20,3 +20,13 @@ console.log('Time to get started,', userName, '!, You silly girl!');
 // - you can also add an "include", and any file or folder NOT in the "include" array WILL NOT
 //      be compiled --> "include": ["app.ts"]
 // - you can also add a "files":[] to compile, tho this setting isn't commonly used.
+
+// some basic config options
+const lilButton = document.querySelector('button')!
+// the exlamation point above tells TS not to worry, that button DOES/WILL exist!
+lilButton.addEventListener('click', () => {
+    console.log('i was clicked!')
+})
+// if "lib":[] is not set/on in tsconfig, some defaults are assumed, and these typically are the defaults
+// that let JS run in the browser, like DOM api's and whatnot... if lib[] is ON, you'll get an error
+// letting you know you have to include some common libraries explicitly (like the document, dom, or even console)
