@@ -30,3 +30,16 @@ lilButton.addEventListener('click', () => {
 // if "lib":[] is not set/on in tsconfig, some defaults are assumed, and these typically are the defaults
 // that let JS run in the browser, like DOM api's and whatnot... if lib[] is ON, you'll get an error
 // letting you know you have to include some common libraries explicitly (like the document, dom, or even console)
+
+// sourceMap setting: if set to true, js.map files are created at TSC, allowing you to see and debug the
+// TS files in the browser/console
+
+// rootDir & outDir
+// src folder is often the 'root' or input, and dist folder is often output (in this case, the compiled JS)
+
+// strict options
+// you can set 'strict' to true, which defaults all the other strict options to true implicitly (but you
+// can set any of them to false and it will be applied), or, you can pick and choose which strict settings 
+// you want to use.
+
+// code quality options: (no unused vars, params, no implicit returns)
