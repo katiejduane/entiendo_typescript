@@ -1,6 +1,6 @@
 // Classes & interfaces
 
-class Department {
+abstract class Department {
     static fiscalYear = 2020;
     // name: string;
     // private employees: string[] = [];
@@ -17,9 +17,9 @@ class Department {
         return { name: name }
     }
 
-    describe() {
-        console.log('Department: ', this.name, this.id)
-    }
+    abstract describe(this: Department): void;
+    // if you have an abstract method like this (forcing all descendent classes to specify what it does)
+    // you must also delcare the class as 'abstract' and remove the {} as well as declare the return type, void
 
     addEmployee(employee: string) {
         this.employees.push(employee)
@@ -31,12 +31,12 @@ class Department {
     }
 }
 
-const accounting = new Department('Accounting', 'B13')
+// const accounting = new Department('Accounting', 'B13')
+// CANNOT CREATE AN INSTANCE OF AN ABSTRACT CLASS!! you must create a child class OF this class and inherit it!
 
-accounting.addEmployee('Max')
-accounting.addEmployee('June')
-
-accounting.printEmployeeInfo()
+// accounting.addEmployee('Max')
+// accounting.addEmployee('June')
+// accounting.printEmployeeInfo()
 
 
 // inheritance!!!!
@@ -60,6 +60,7 @@ class ITDeparment extends Department {
     // if you want the exact same constructor as the parent class, you don't need to delcare one
     // and you can instantiate this class exactly as you would the parent. but you can add a nerw constructor...
     constructor(id: string, admins: string[], reports: string[]) {
+        // if you make the constructor private, it makes a sort of 'singleton' class
         super(id, 'Information Tech')
         this.lastReport = reports[0];
         // if you make a new constructor in a child class, you MUST call super. it calls the 
@@ -69,6 +70,10 @@ class ITDeparment extends Department {
         // if you don't want any new args to be forwarded to the parent class, you must declare them
         this.admins = admins;
         this.reports = reports;
+    }
+
+    describe() {
+        console.log('Department: ', this.id)
     }
 
     addReport(text: string) {
@@ -96,3 +101,4 @@ console.log(itDept.printReports()) //note that you don't call a getter with (), 
 // - static properties and methods are accessible on the class, but not instances of the class. 
 //      - they are not available in the constructor function using 'this'; as
 //        they're detached from instances, you must use the class name: Department.fiscalYear
+// - abtract classes: cannot be instantiated, only inherited from
