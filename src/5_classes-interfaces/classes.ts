@@ -1,4 +1,4 @@
-// Classes & interfaces
+// Classes
 
 abstract class Department {
     static fiscalYear = 2020;
