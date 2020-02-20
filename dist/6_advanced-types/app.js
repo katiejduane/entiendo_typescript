@@ -49,3 +49,18 @@ function useVehicle(vehicle) {
 }
 useVehicle(v1);
 useVehicle(v2);
+function moveAnimal(animal) {
+    var speed;
+    switch (animal.kind) {
+        case "horse":
+            speed = animal.runningSpeed;
+            break;
+        case "bird":
+            speed = animal.flyingSpeed;
+    }
+    console.log("Moving at speed: ", speed);
+}
+moveAnimal({ kind: "horse", runningSpeed: 13 });
+var inputElement = document.getElementById("user-input");
+var paragraph = document.getElementById("msg");
+inputElement.value = "hi there";

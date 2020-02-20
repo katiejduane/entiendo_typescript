@@ -78,3 +78,37 @@ function useVehicle(vehicle: Vehicle) {
 
 useVehicle(v1);
 useVehicle(v2);
+
+// discriminated unions: a special type of or helper for type guards, avail with object types
+interface Bird {
+  kind: "bird";
+  flyingSpeed: number;
+}
+
+interface Horse {
+  kind: "horse";
+  runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+  let speed;
+  switch (animal.kind) {
+    case "horse":
+      speed = animal.runningSpeed;
+      break; // without this break the second kind will error
+    case "bird":
+      speed = animal.flyingSpeed;
+  }
+  console.log("Moving at speed: ", speed);
+}
+moveAnimal({ kind: "horse", runningSpeed: 13 });
+
+// type casting
+// helps you tell typsecript some value is of some type if TS cannot detect it on its own
+// helpful for elements in the dom!
+const inputElement = <HTMLInputElement>document.getElementById("user-input")!; // one way to type cast, doesn't work with react/jsx
+const paragraph = document.getElementById("msg")! as HTMLParagraphElement; // another way to type cast
+
+inputElement.value = "hi there";
